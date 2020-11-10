@@ -28,11 +28,12 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  counter1 always starts at 0 unless you call on the function counter(), but counter 2 doesnt give a choice to start at 0 or not
   2. Which of the two uses a closure? How can you tell?
-  
+  counter 1 because it it contained within the larger function and stops when the function is finished
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     when you have numbers that you want to count to a certain number starting at a given number, and use 2 when you are just counting from 0 
 */
 
 // counter1 code
@@ -61,9 +62,9 @@ Use the inning function below to do the following:
   For example: invoking inning() should return a numerical score value of 0, 1, or 2
 */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
+function inning(){
+  var score = Math.round(Math.random() * 2);
+  return score;
 
 }
 
@@ -80,9 +81,16 @@ For example: invoking finalScore(inning, 9) might return this object:
 }
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
+function finalScore(inning, numInning){
+  let score = {
+    Home: 0,
+    Away: 0
+  }
+  for(let i=0; i < numInning; i++){
+    score.Home += inning();
+    score.Away += inning();
+  }
+  return score;
 
 }
 
@@ -91,9 +99,14 @@ function finalScore(/*code Here*/){
 // the function should take the inning function as an argument 
 // it should return an object with with a score for home and a score for away that that populates from invoking the inning callback. */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore() {
+  
 }
+
+
+
+
+
 /* Task 5: scoreboard()
 Use the scoreboard function below to do the following:
   1. Receive a callback function, that you create, called `getInningScore`
